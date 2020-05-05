@@ -1,0 +1,24 @@
+<!-- <h4 *ngIf="loading">Loading...</h4>
+<app-link-item
+  *ngFor="let link of linksToRender; let index = index"
+  [link]="link"
+  [index]="index"
+  [isAuthenticated]="loggedIn | async"
+  [updateStoreAfterVote]="updateStoreAfterVote"
+></app-link-item> -->
+
+<h4 *ngIf="loading">Loading...</h4>
+<app-link-item
+  *ngFor="let link of (orderedLinks | async); let index = index"
+  [link]="link"
+  [index]="index"
+  [isAuthenticated]="loggedIn"
+  [updateStoreAfterVote]="updateStoreAfterVote"
+>
+</app-link-item>
+<div *ngIf="(isNewPage | async)">
+  <button *ngIf="!(isFirstPage | async)" (click)="previousPage()">
+    Previous
+  </button>
+  <button *ngIf="(morePages | async)" (click)="nextPage()">Next</button>
+</div>

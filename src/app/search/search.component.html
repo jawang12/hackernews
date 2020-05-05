@@ -1,0 +1,18 @@
+<div>
+  Search
+  <!-- 1. ngModelChange event listens to changes in the ngModel searchText and
+    fires the executeSearch function after any changes
+   -->
+  <input
+    type="text"
+    [(ngModel)]="searchText"
+    (ngModelChange)="executeSearch()"
+  />
+</div>
+<app-link-item
+  *ngFor="let link of (allLinks | async); let index = index"
+  [link]="link"
+  [index]="index"
+  [isAuthenticated]="loggedIn"
+>
+</app-link-item>
